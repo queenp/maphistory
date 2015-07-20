@@ -1,0 +1,6 @@
+div#map {
+  position:absolute;
+  width:99%;
+  top:5px;
+  bottom:5px;
+}

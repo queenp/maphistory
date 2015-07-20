@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MapHistory PoC</title>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <link href="styles.css" rel='stylesheet' />
+  </head>
+  <body>
+  <div id="map"></div>
+  <script>
+  // Provide your access token
+  L.mapbox.accessToken = 'pk.eyJ1IjoicXVlZW5wIiwiYSI6ImRkODMwM2YwZjAzYjU2ZDYxY2M0MTA3MTlmNzZmOGFlIn0.Rw-qtx2TGlIrlUkgdCvR_A';
+  // Create a map in the div #map
+  L.mapbox.map('map', 'queenp.2769e339');
+  </script>
+  </body>
+</html>
