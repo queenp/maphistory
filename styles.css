@@ -1,7 +1,17 @@
-div#map {
+#map {
   position:absolute;
-  width:99%;
-  top:5px;
-  bottom:5px;
+  top:0;
+  bottom:0;
+  width:100%;
+}
+
+
+article {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0px;
+  left:0;
+  overflow:auto;
 }
 #slider { margin: 10px; }

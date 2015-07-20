@@ -4,8 +4,8 @@ var fakeobjs = {
     {
       "type": "Feature",
       "properties": {
-        start_year: "1945",
-        end_year: "2015"
+        start_year: 1945,
+        end_year: 2015
       },
       "geometry": {
         "type": "Polygon",
@@ -38,8 +38,8 @@ var fakeobjs = {
     {
       "type": "Feature",
       "properties": {
-        start_year: "1965",
-        end_year: "2012",
+        start_year: 1965,
+        end_year: 2012,
       },
       "geometry": {
         "type": "Polygon",
@@ -72,8 +72,8 @@ var fakeobjs = {
     {
       "type": "Feature",
       "properties": {
-        start_year: "1978",
-        end_year: "1999"
+        start_year: 1978,
+        end_year: 1999
       },
       "geometry": {
         "type": "Polygon",
@@ -106,8 +106,8 @@ var fakeobjs = {
     {
       "type": "Feature",
       "properties": {
-        start_year:"2000",
-        end_year:"2015"
+        start_year:2000,
+        end_year:2015
       },
       "geometry": {
         "type": "Polygon",
