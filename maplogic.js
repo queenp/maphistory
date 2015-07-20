@@ -34,11 +34,9 @@ function setId(newId) {
     }
     // If the ID hasn't actually changed, don't do anything
     if (newId === currentId) return;
-    // Otherwise, iterate through layers, setting the current
-    // marker to a different color and zooming to it.
     fakeObjsLayer.eachLayer(function(layer) {
         if (layer.feature.properties.start_year < parseInt(newId) && layer.feature.properties.end_year > parseInt(newId)) {
-            //map.setView(layer.getLatLng(), layer.feature.properties.zoom || 14);
+            map.setView(layer.getBounds().getCenter(), layer.feature.properties.zoom || 17);
             layer.setStyle(vis_style);
         } else {
             layer.setStyle(invis_style);
