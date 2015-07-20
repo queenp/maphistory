@@ -2,16 +2,22 @@
 L.mapbox.accessToken = 'pk.eyJ1IjoicXVlZW5wIiwiYSI6ImRkODMwM2YwZjAzYjU2ZDYxY2M0MTA3MTlmNzZmOGFlIn0.Rw-qtx2TGlIrlUkgdCvR_A';
 // Create a map in the div #map
 map = L.mapbox.map('map', 'queenp.2769e339', {
-  zoomControl:false
+  zoomControl:false,
+  fadeAnimation:true,
 });
 
-//Create a marker layer (in the example done via a GeoJSON FeatureCollection)
-// Ilustrating how to add geoJson objects to a map
+// Create feature overlay layer
 // Can easily create geoJson objects at http://geojson.io
-fakeObjsLayer = L.geoJson(fakeobjs);
-
-fakeObjsLayer.addTo(map);
-
+hist_features_layer = L.geoJson(hist_features, {
+  style: {
+    color: '#222',
+    fillColor: '#000',
+    opacity: 1,
+    fillOpacity: 0.8,
+    weight: 5,
+    lineJoin: "round",
+  }
+});
 
 // Cribbed from Sherlock example on mapbox.com
 // Ahead of time, select the elements we'll need -
@@ -24,22 +30,17 @@ setId("1940");
 
 function setId(newId) {
     // TODO: Replace these with proper styling, abstract out of js.
-    vis_style={
-      opacity:0,
-      fillOpacity: 1
-    }
-    invis_style={
-      opacity:0,
-      fillOpacity: 0
-    }
     // If the ID hasn't actually changed, don't do anything
     if (newId === currentId) return;
-    fakeObjsLayer.eachLayer(function(layer) {
-        if (layer.feature.properties.start_year < parseInt(newId) && layer.feature.properties.end_year > parseInt(newId)) {
-            map.setView(layer.getBounds().getCenter(), layer.feature.properties.zoom || 17);
-            layer.setStyle(vis_style);
+    hist_features_layer.eachLayer(function(layer) {
+        // Does this feature exist for a given year? If so, show.
+        if (layer.feature.properties.start_year <= parseInt(newId) && layer.feature.properties.end_year >= parseInt(newId)) {
+          if(!map.hasLayer(layer)){
+            map.setView(layer.getBounds().getCenter(), layer.feature.properties.zoom || 15);
+            map.addLayer(layer);
+          }
         } else {
-            layer.setStyle(invis_style);
+            map.removeLayer(layer);
         }
     });
     // highlight the current section
