@@ -6,23 +6,14 @@ map = L.mapbox.map('map', 'queenp.2769e339', {
 });
 
 //Create a marker layer (in the example done via a GeoJSON FeatureCollection)
-var YEAR = 1950;
 // Ilustrating how to add geoJson objects to a map
 // Can easily create geoJson objects at http://geojson.io
-fakeObjsLayer = L.geoJson(fakeobjs, {
-  // filter: function(feature, layer) {
-  //   // TODO: insert filter function when slider created.
-  //   //
-  //   if(feature.properties.start_year < YEAR && feature.properties.end_year > YEAR) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-});
+fakeObjsLayer = L.geoJson(fakeobjs);
 
 fakeObjsLayer.addTo(map);
 
+
+// Cribbed from Sherlock example on mapbox.com
 // Ahead of time, select the elements we'll need -
 // the narrative container and the individual sections
 var timeline = document.getElementById('timeline'),
@@ -75,8 +66,4 @@ timeline.onscroll = function(e) {
         }
     };
     setId(newId);
-};
-
-//var sliderControl = L.control.sliderControl({position: "topright", layer: fakeObjsLayer, timeAttribute:'start_year'});
-//map.addControl(sliderControl);
-//sliderControl.startSlider();
+  };
