@@ -34,10 +34,12 @@ setId("1940");
 function setId(newId) {
     // TODO: Replace these with proper styling, abstract out of js.
     vis_style={
-      opacity:1
+      opacity:0,
+      fillOpacity: 1
     }
     invis_style={
-      opacity:0
+      opacity:0,
+      fillOpacity: 0
     }
     // If the ID hasn't actually changed, don't do anything
     if (newId === currentId) return;
