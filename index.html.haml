@@ -1,0 +1,20 @@
+!!! XML
+!!!
+%html
+  %head
+    %title MapHistory PoC
+    = javascript_include_tag("https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js")
+    = javascript_include_tag("fakeobjs.js")
+    %meta{'name'=>'viewport', 'content'=>'initial-scale=1,maximum-scale=1,user-scalable=no'}
+    = stylesheet_link_tag('https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css')
+    = stylesheet_link_tag('styles.css')
+  %body
+    #map
+    %article#timeline
+      .sections
+        =(1940..2015).step(3) do |x|
+          %section{:id => x}
+            %h2
+              ="%d: %s" % [x, lorem_words(3)]
+            = lorem_words(4+rand(2))
+    = javascript_include_tag("maplogic.js")
